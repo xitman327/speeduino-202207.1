@@ -18,7 +18,7 @@ Default CAN3 pins are PA8 & PA15. Alternative (ALT) pins are PB3 & PB4.
 #endif
 
 #if defined SD_LOGGING
-    SPIClass SD_SPI(PB15, PB14, PB13); //SPI2_MOSI, SPI2_MISO, SPI2_SCK
+    //SPIClass SD_SPI(PB15, PB14, PB13); //SPI2_MOSI, SPI2_MISO, SPI2_SCK
 #endif
 
 #if defined(SRAM_AS_EEPROM)
@@ -88,6 +88,10 @@ STM32RTC& rtc = STM32RTC::getInstance();
       #define FLASH_LENGTH 8192
     #endif
     delay(10);
+
+  SPI.setMOSI(PB15);
+  SPI.setMISO(PB14);
+  SPI.setSCLK(PB13);
 
     /*
     ***********************************************************************************************************

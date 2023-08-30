@@ -39,13 +39,14 @@
 #endif
 
 #define SD_LOGGING// force that shit
+#define SD_CS_PIN PC14
 
 
 #if defined SD_LOGGING
   #define RTC_ENABLED
   //SD logging with STM32 uses SD card in SPI mode, because used SD library doesn't support SDIO implementation. By default SPI3 is used that uses same pins as SDIO also, but in different order.
-  extern SPIClass SD_SPI; //SPI3_MOSI, SPI3_MISO, SPI3_SCK
-  #define SD_CONFIG SdSpiConfig(SD_CS_PIN, DEDICATED_SPI, SD_SCK_MHZ(50), &SD_SPI)
+  //extern SPIClass SD_SPI; //SPI3_MOSI, SPI3_MISO, SPI3_SCK
+  //#define SD_CONFIG SdSpiConfig(SD_CS_PIN, SHARED_SPI, SD_SCK_MHZ(50), &SD_SPI)
   //Alternatively same SPI bus can be used as there is for SPI flash. But this is not recommended due to slower speed and other possible problems.
   //#define SD_CONFIG SdSpiConfig(SD_CS_PIN, SHARED_SPI, SD_SCK_MHZ(50), &SPI_for_flash)
 #endif

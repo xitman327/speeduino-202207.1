@@ -30,7 +30,7 @@ void initSD()
   FsDateTime::setCallback(dateTime);
 
   // Initialise the SD.
-  if (!sd.begin(SD_CONFIG)) 
+  if (!sd.begin(SD_CS_PIN)) 
   {
     //sd.initErrorHalt(&Serial);
     //if (sdErrorCode() == SD_CARD_ERROR_CMD0) { SD_status = SD_STATUS_ERROR_NO_CARD;
@@ -475,7 +475,7 @@ void formatExFat()
 
   logFile.close();
 
-  if (sd.cardBegin(SD_CONFIG)) 
+  if (sd.begin(SD_CS_PIN)) 
   {
     if(sd.format()) 
     {

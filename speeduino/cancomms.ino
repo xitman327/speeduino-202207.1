@@ -866,9 +866,9 @@ void write_can(){
 }
 
 void init_can(){
-  SPI.setMOSI(PB15);
-  SPI.setMISO(PB14);
-  SPI.setSCLK(PB13);
+  // SPI.setMOSI(PB15);
+  // SPI.setMISO(PB14);
+  // SPI.setSCLK(PB13);
   int tmp = CAN0.begin(MCP_STDEXT, CAN_500KBPS, MCP_16MHZ);
   if(tmp){Serial.print("CANBUSERROR ");Serial.println(tmp);}
   CAN0.setMode(MCP_NORMAL);

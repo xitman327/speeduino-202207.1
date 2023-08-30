@@ -115,6 +115,7 @@ void initialiseAll(void)
   #endif
 
     Serial.begin(115200);
+    //delay(5000);
     BIT_SET(currentStatus.status4, BIT_STATUS4_ALLOW_LEGACY_COMMS); //Flag legacy comms as being allowed on startip
     #if defined(CANSerial_AVAILABLE)
       if (configPage9.enable_secondarySerial == 1) { CANSerial.begin(115200); }
@@ -1624,33 +1625,33 @@ void setPinMapping(byte boardID)
         //pins PA12, PA11 are used for USB or CAN couldn't be used for GPIO
         //pins PB12, PB13, PB14 and PB15 are used to SPI FLASH
         //PB2 can't be used as input because it's the BOOT pin
-        pinInjector1 = PB7; //Output pin injector 1 is on
-        pinInjector2 = PB6; //Output pin injector 2 is on
-        pinInjector3 = PB5; //Output pin injector 3 is on
-        pinInjector4 = PB4; //Output pin injector 4 is on
-        pinCoil1 = PB9; //Pin for coil 1
-        pinCoil2 = PB8; //Pin for coil 2
-        pinCoil3 = PB3; //Pin for coil 3
-        pinCoil4 = PA15; //Pin for coil 4
-        pinTPS = A2;//TPS input pin
-        pinMAP = A3; //MAP sensor pin
-        pinIAT = A0; //IAT sensor pin
-        pinCLT = A1; //CLS sensor pin
-        pinO2 = A8; //O2 Sensor pin
-        pinBat = A4; //Battery reference voltage pin
+        pinInjector1 = PB5; //Output pin injector 1 is on
+        pinInjector2 = PB4; //Output pin injector 2 is on
+        pinInjector3 = PB3; //Output pin injector 3 is on
+        pinInjector4 = PA15; //Output pin injector 4 is on
+        pinCoil1 = PB6; //Pin for coil 1
+        pinCoil2 = PB7; //Pin for coil 2
+        pinCoil3 = PB8; //Pin for coil 3
+        pinCoil4 = PB9; //Pin for coil 4
+        pinTPS = A3;//TPS input pin
+        pinMAP = A4; //MAP sensor pin
+        pinIAT = A5; //IAT sensor pin
+        pinCLT = A6; //CLS sensor pin
+        pinO2 = A7; //O2 Sensor pin
+        pinBat = A8; //Battery reference voltage pin
         pinBaro = pinMAP;
-        pinTachOut = PB1; //Tacho output pin  (Goes to ULN2803)
-        pinIdle1 = PB2; //Single wire idle control
-        pinIdle2 = PB10; //2 wire idle control
-        pinBoost = PA6; //Boost control
-        pinStepperDir = PB10; //Direction pin  for DRV8825 driver
-        pinStepperStep = PB2; //Step pin for DRV8825 driver
-        pinFuelPump = PA8; //Fuel pump output
-        pinFan = PA5; //Pin for the fan output (Goes to ULN2803)
+        pinTachOut = -1; //Tacho output pin  (Goes to ULN2803)
+        pinIdle1 = -1; //Single wire idle control
+        pinIdle2 = -1; //2 wire idle control
+        pinBoost = -1; //Boost control
+        pinStepperDir = -1; //Direction pin  for DRV8825 driver
+        pinStepperStep = -1; //Step pin for DRV8825 driver
+        pinFuelPump = PB10; //Fuel pump output
+        pinFan = PB2; //Pin for the fan output (Goes to ULN2803)
         //external interrupt enabled pins
         pinFlex = PC14; // Flex sensor (Must be external interrupt enabled)
-        pinTrigger = PC13; //The CAS pin also led pin so bad idea
-        pinTrigger2 = PC15; //The Cam Sensor pin
+        pinTrigger = PA2; //The CAS pin also led pin so bad idea
+        pinTrigger2 = PA1; //The Cam Sensor pin
       #endif
       break;
 
