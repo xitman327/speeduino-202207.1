@@ -845,7 +845,11 @@ void readAuxCanBus()
 #endif
 
 void check_can(){
+#if defined(CAN0_INT)
   if(!digitalRead(CAN0_INT)){
+#else
+  if(CAN0.checkReceive()){
+#endif
     CAN0.readMsgBuf(&inMsg.id, &inMsg.len, inMsg.buf);
     // Serial.println(inMsg.id);
     // Serial.println(inMsg.buf[0]);
@@ -862,7 +866,7 @@ void check_can(){
 
 void write_can(){
     int tmp = CAN0.sendMsgBuf(outMsg.id, outMsg.len, outMsg.buf);
-    if(tmp){Serial.print("CANBUSERROR ");Serial.println(tmp);}
+    if(tmp){Serial.print("CANBUSWRITEERROR ");Serial.println(tmp);}
 }
 
 void init_can(){
@@ -870,6 +874,6 @@ void init_can(){
   // SPI.setMISO(PB14);
   // SPI.setSCLK(PB13);
   int tmp = CAN0.begin(MCP_STDEXT, CAN_500KBPS, MCP_16MHZ);
-  if(tmp){Serial.print("CANBUSERROR ");Serial.println(tmp);}
+  if(tmp){Serial.print("CANBUSINITERROR ");Serial.println(tmp);}
   CAN0.setMode(MCP_NORMAL);
 }

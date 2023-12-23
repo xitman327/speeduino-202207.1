@@ -114,7 +114,7 @@ void initialiseAll(void)
     initSD();
   #endif
 
-    Serial.begin(115200);
+    Serial.begin(250000);
     //delay(5000);
     BIT_SET(currentStatus.status4, BIT_STATUS4_ALLOW_LEGACY_COMMS); //Flag legacy comms as being allowed on startip
     #if defined(CANSerial_AVAILABLE)
@@ -1647,9 +1647,9 @@ void setPinMapping(byte boardID)
         pinStepperDir = -1; //Direction pin  for DRV8825 driver
         pinStepperStep = -1; //Step pin for DRV8825 driver
         pinFuelPump = PB10; //Fuel pump output
-        pinFan = PB2; //Pin for the fan output (Goes to ULN2803)
+        pinFan = PB1; //Pin for the fan output (Goes to ULN2803)
         //external interrupt enabled pins
-        pinFlex = PC14; // Flex sensor (Must be external interrupt enabled)
+        pinFlex = -1; // Flex sensor (Must be external interrupt enabled)
         pinTrigger = PA2; //The CAS pin also led pin so bad idea
         pinTrigger2 = PA1; //The Cam Sensor pin
       #endif

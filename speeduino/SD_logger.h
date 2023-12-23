@@ -38,7 +38,7 @@
 #if defined CORE_TEENSY
     #define SD_CS_PIN BUILTIN_SDCARD
 #elif defined CORE_STM32
-    #define SD_CS_PIN PC14 //PD2 change to suit //CS pin can be pretty much anything, but PD2 is one of the ones left unused from SDIO pins.
+    #define SD_CS_PIN PB2 //PD2 change to suit //CS pin can be pretty much anything, but PD2 is one of the ones left unused from SDIO pins.
 #else
     #define SD_CS_PIN 10 //This is a made up value for now
 #endif

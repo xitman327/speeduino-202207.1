@@ -38,8 +38,8 @@
   #define SD_LOGGING
 #endif
 
-#define SD_LOGGING// force that shit
-#define SD_CS_PIN PC14
+#define SD_LOGGING// force that shit    PC14 - PC15 Cant be used while using RTC
+#define SD_CS_PIN PB2
 
 
 #if defined SD_LOGGING
